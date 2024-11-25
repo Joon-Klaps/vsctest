@@ -4,6 +4,8 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
 include { FASTQC                 } from '../modules/nf-core/fastqc/main'
+include { TENSORFLOW_GPU         } from '../modules/local/tensorflow-gpu.nf'
+include { TENSORFLOW             } from '../modules/local/tensorflow.nf'
 
 
 
@@ -23,15 +25,23 @@ workflow VSCTEST {
     main:
 
     ch_versions = Channel.empty()
-    
+
     //
     // MODULE: Run FastQC
     //
     FASTQC (
         ch_samplesheet
     )
-    
+
     ch_versions = ch_versions.mix(FASTQC.out.versions.first())
+
+    TENSORFLOW_GPU (
+        ch_samplesheet
+    )
+
+    TENSORFLOW (
+        ch_samplesheet
+    )
 
     //
     // Collate and save software versions
