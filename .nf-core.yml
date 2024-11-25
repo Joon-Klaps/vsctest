@@ -1,0 +1,92 @@
+bump_version: null
+lint:
+  files_exist:
+  - .github/workflows/branch.yml
+  - .github/workflows/ci.yml
+  - .github/workflows/linting_comment.yml
+  - .github/workflows/linting.yml
+  - conf/igenomes.config
+  - conf/igenomes_ignored.config
+  - CITATIONS.md
+  - assets/multiqc_config.yml
+  - nextflow_schema.json
+  - assets/email_template.html
+  - assets/sendmail_template.txt
+  - assets/email_template.txt
+  - docs/output.md
+  - docs/README.md
+  - docs/usage.md
+  - .github/workflows/branch.yml
+  - .github/workflows/ci.yml
+  - .github/workflows/linting_comment.yml
+  - .github/workflows/linting.yml
+  - conf/igenomes.config
+  - conf/igenomes_ignored.config
+  - CITATIONS.md
+  - assets/multiqc_config.yml
+  - nextflow_schema.json
+  - assets/email_template.html
+  - assets/sendmail_template.txt
+  - assets/email_template.txt
+  - docs/output.md
+  - docs/README.md
+  - docs/usage.md
+  - CODE_OF_CONDUCT.md
+  - assets/nf-core-vsctest_logo_light.png
+  - docs/images/nf-core-vsctest_logo_light.png
+  - docs/images/nf-core-vsctest_logo_dark.png
+  - .github/ISSUE_TEMPLATE/config.yml
+  - .github/workflows/awstest.yml
+  - .github/workflows/awsfulltest.yml
+  files_unchanged:
+  - .github/CONTRIBUTING.md
+  - .github/CONTRIBUTING.md
+  - assets/sendmail_template.txt
+  - .prettierignore
+  - .prettierignore
+  - .prettierignore
+  - .github/CONTRIBUTING.md
+  - .github/CONTRIBUTING.md
+  - assets/sendmail_template.txt
+  - .prettierignore
+  - .prettierignore
+  - .prettierignore
+  - CODE_OF_CONDUCT.md
+  - assets/nf-core-vsctest_logo_light.png
+  - docs/images/nf-core-vsctest_logo_light.png
+  - docs/images/nf-core-vsctest_logo_dark.png
+  - .github/ISSUE_TEMPLATE/bug_report.yml
+  multiqc_config: false
+  nextflow_config: false
+  readme:
+  - nextflow_badge
+  schema_description: false
+  schema_lint: false
+  schema_params: false
+nf_core_version: 3.0.2
+org_path: null
+repository_type: pipeline
+template:
+  author: Joon-Klaps
+  description: Short pipeline to test vsc profiles of vsc_kul_uhasselt
+  force: true
+  is_nfcore: false
+  name: vsctest
+  org: Joon-Klaps
+  outdir: .
+  skip_features:
+  - ci
+  - igenomes
+  - github_badges
+  - citations
+  - gitpod
+  - codespaces
+  - multiqc
+  - nf_schema
+  - email
+  - adaptivecard
+  - slackreport
+  - documentation
+  - seqera_platform
+  version: 1.0.0dev
+update: null
