@@ -1,11 +1,11 @@
 
-process TENSORFLOW_GPU {
+process BEAST_GPU {
     tag "$meta.id"
     label 'process_gpu'
 
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/26/26e44443247df87b61bfdc04b485767a7a0d8705d7e3ca4533ba6fac10dee72d/data':
-        'community.wave.seqera.io/library/pip_tensorflow:0f749bed0a38a835' }"
+        '/lustre1/project/stg_00132/jklaps/genus-coronaviridae/beast/testing/singularity-def/beagle-lib_beast.wouter.sif':
+        'jklaps/beast-beagle-cuda:latest' }"
 
     input:
     tuple val(meta), path(bam)
@@ -21,7 +21,7 @@ process TENSORFLOW_GPU {
     def args = task.ext.args ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
     """
-    checkgpu.py > ${prefix}.gpu.info
+    beast -beagle_info > ${prefix}.gpu.info
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":

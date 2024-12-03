@@ -3,9 +3,11 @@
     IMPORT MODULES / SUBWORKFLOWS / FUNCTIONS
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
-include { FASTQC                 } from '../modules/nf-core/fastqc/main'
-include { TENSORFLOW_GPU         } from '../modules/local/tensorflow-gpu.nf'
-include { TENSORFLOW             } from '../modules/local/tensorflow.nf'
+include { FASTQC     } from '../modules/nf-core/fastqc/main'
+include { BEAST_GPU  } from '../modules/local/beast-gpu.nf'
+include { TENSOR_GPU } from '../modules/local/tensor-gpu.nf'
+include { BEAST      } from '../modules/local/beast.nf'
+include { TENSOR     } from '../modules/local/tensor.nf'
 
 
 
@@ -26,23 +28,22 @@ workflow VSCTEST {
 
     ch_versions = Channel.empty()
 
-    //
-    // MODULE: Run FastQC
-    //
-    FASTQC (
+
+    BEAST_GPU (
         ch_samplesheet
     )
 
-    ch_versions = ch_versions.mix(FASTQC.out.versions.first())
-
-    TENSORFLOW_GPU (
+    BEAST (
         ch_samplesheet
     )
 
-    TENSORFLOW (
+    TENSOR (
         ch_samplesheet
     )
 
+    TENSOR_GPU (
+        ch_samplesheet
+    )
     //
     // Collate and save software versions
     //
