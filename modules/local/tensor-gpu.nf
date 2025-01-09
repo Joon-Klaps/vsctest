@@ -21,7 +21,7 @@ process TENSOR_GPU {
     python3 <<EOF > ${meta.id}_tf.gpu.info
     import tensorflow as tf
     print("TensorFlow version:", tf.__version__)
-    print("GPU available:", tf.test.is_gpu_available())
+    print("GPU available:", tf.config.list_physical_devices('GPU'))
     EOF
     """
 
